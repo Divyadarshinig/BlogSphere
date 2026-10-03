@@ -1,5 +1,5 @@
 import {
-    BrowserRouter,
+    HashRouter,
     Routes,
     Route
 } from "react-router-dom";
@@ -18,16 +18,25 @@ import NotFound from "./pages/NotFound";
 
 function App() {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Navbar />
 
             <Routes>
 
                 {/* Public Routes */}
 
+                                <Route
+                    path="/dashboard"
+                    element={
+                        <ProtectedRoute>
+                            <Dashboard />
+                        </ProtectedRoute>
+                    }
+                />
+
                 <Route
-                    path="/"
-                    element={<Home />}
+                    path="*"
+                    element={<NotFound />}
                 />
 
                 <Route
@@ -79,7 +88,7 @@ function App() {
 />
 
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 
