@@ -1,3 +1,4 @@
+
 import {
     HashRouter,
     Routes,
@@ -22,10 +23,14 @@ function App() {
             <Navbar />
 
             <Routes>
-
                 {/* Public Routes */}
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/post/:id" element={<PostDetails />} />
 
-                                <Route
+                {/* Protected Routes */}
+                <Route
                     path="/dashboard"
                     element={
                         <ProtectedRoute>
@@ -33,28 +38,6 @@ function App() {
                         </ProtectedRoute>
                     }
                 />
-
-                <Route
-                    path="*"
-                    element={<NotFound />}
-                />
-
-                <Route
-                    path="/login"
-                    element={<Login />}
-                />
-
-                <Route
-                    path="/register"
-                    element={<Register />}
-                />
-
-                <Route
-                    path="/post/:id"
-                    element={<PostDetails />}
-                />
-
-                {/* Protected Routes */}
 
                 <Route
                     path="/create-post"
@@ -74,19 +57,8 @@ function App() {
                     }
                 />
 
-                <Route
-                    path="/dashboard"
-                    element={
-                        <ProtectedRoute>
-                            <Dashboard />
-                        </ProtectedRoute>
-                    }
-                />
-                <Route
-    path="*"
-    element={<NotFound />}
-/>
-
+                {/* Keep NotFound last */}
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </HashRouter>
     );
