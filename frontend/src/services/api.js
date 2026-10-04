@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://blogsphere-backend-9va4.onrender.com/api";
 
 // Generic API request helper
 const apiRequest = async (endpoint, options = {}) => {
